@@ -5,38 +5,7 @@ fn difference(a: &i32, b: &i32) -> i32 {
    diff.abs()
 }
 
-fn part_one(filepath: &str) -> Result<i32> {
-    let (mut list_one, mut list_two): (Vec<i32>, Vec<i32>) = std::fs::read_to_string(filepath)?
-        .lines()
-        .map(|line| line
-            .split_once("   ")
-            .and_then(|(x,y)| {
-                let x = match x.parse::<i32>() {
-                    Ok(x) => x,
-                    Err(..) => 0
-                };
-                let y = match y.parse::<i32>() {
-                    Ok(y) => y,
-                    Err(..) => 0
-                };
-                Some((x, y))
-            }).unwrap())
-        .collect::<Vec<(i32, i32)>>()
-        .into_iter()
-        .unzip();
-
-    list_one.sort();
-    list_two.sort();
-
-    let mut sum = 0;
-    for (x,y) in list_one.iter().zip(list_two.iter()) {
-        sum += difference(x, y);
-    }
-
-    Ok(sum)
-}
-
-fn part_two(filepath: &str) -> Result<i32> {
+fn prep_data(filepath: &str) -> Result<(Vec<i32>, Vec<i32>)> {
     let (list_one, list_two): (Vec<i32>, Vec<i32>) = std::fs::read_to_string(filepath)?
         .lines()
         .map(|line| line
@@ -56,6 +25,26 @@ fn part_two(filepath: &str) -> Result<i32> {
         .collect::<Vec<(i32, i32)>>()
         .into_iter()
         .unzip();
+
+    Ok((list_one, list_two))
+}
+
+fn part_one(filepath: &str) -> Result<i32> {
+    let (mut list_one, mut list_two) = prep_data(filepath)?;
+
+    list_one.sort();
+    list_two.sort();
+
+    let mut sum = 0;
+    for (x,y) in list_one.iter().zip(list_two.iter()) {
+        sum += difference(x, y);
+    }
+
+    Ok(sum)
+}
+
+fn part_two(filepath: &str) -> Result<i32> {
+    let (list_one, list_two) = prep_data(filepath)?;
 
     let mut score = 0;
     for x in list_one.iter() {
