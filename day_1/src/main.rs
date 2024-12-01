@@ -10,7 +10,6 @@ fn part_one(filepath: &str) -> Result<i32> {
         .lines()
         .map(|line| line
             .split_once("   ")
-            .ok_or_else(|| anyhow::anyhow!("Could not split line: {}", line))
             .and_then(|(x,y)| {
                 let x = match x.parse::<i32>() {
                     Ok(x) => x,
@@ -20,7 +19,7 @@ fn part_one(filepath: &str) -> Result<i32> {
                     Ok(y) => y,
                     Err(..) => 0
                 };
-                Ok((x, y))
+                Some((x, y))
             }).unwrap())
         .collect::<Vec<(i32, i32)>>()
         .into_iter()
