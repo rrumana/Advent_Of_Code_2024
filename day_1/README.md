@@ -3,7 +3,9 @@ https://adventofcode.com/2024
 
 My findings:
 
+This day was actually super difficult, not because the challenge was hard, but because I was trying to be really fancy with my approach and use Rust's more functional side. I also have stipulated that I will not use unwrap as mush as possible, so that means learning about error handling a lot more. The challenge was pretty easy after I figured out how to parse a whole text file into two vectors in one go.
 
+My solution is not very efficient though. For part two I used a O(n^2) solution, which is not ideal. I could have gotten it down to O(nlogn) with a bit of tuning, but honestly it doesn't matter for this challenge
 
 Instructions follow:
 
