@@ -1,5 +1,6 @@
 use anyhow::{Context, Result};
 use std::fs;
+use std::collections::HashMap;
 
 
 // data cleaning methods
@@ -51,18 +52,31 @@ fn part_one(filepath: &str) -> Result<i32> {
 
 // part two methods
 
-fn part_two(filepath: &str) -> Result<i32> {
-    let (list_one, list_two) = prep_data(filepath)?;
+fn map_frequency(list: &Vec<i32>) -> HashMap<i32, i32> {
+    let mut freq_map = HashMap::new();
 
-    let mut score = 0;
-    for x in list_one.iter() {
-        for y in list_two.iter() {
-            if x == y {
-                score += x;
-            }
-        }
+    for x in list.iter() {
+        let count = freq_map.entry(*x).or_insert(0);
+        *count += 1;
     }
 
+    freq_map
+}
+
+fn part_two(filepath: &str) -> Result<i32> {
+    let (list_one, list_two) = prep_data(filepath)?;
+    let list_one_hashmap = map_frequency(&list_one);
+    let list_two_hashmap = map_frequency(&list_two);
+
+    let mut score = 0;
+
+    for (key, value) in list_one_hashmap.iter() {
+        match list_two_hashmap.get(key) {
+            Some(num) => score += key * value * num,
+            None => continue,
+        };
+    }
+    
     Ok(score)
 }
 
