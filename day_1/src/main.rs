@@ -16,13 +16,11 @@ fn parse_line(line: &str) -> Result<(i32, i32)> {
 }
 
 fn prep_data(filepath: &str) -> Result<(Vec<i32>, Vec<i32>)> {
-    let pairs: Vec<_> = fs::read_to_string(filepath)
+    let (list_one, list_two): (Vec<i32>, Vec<i32>) = fs::read_to_string(filepath)
         .with_context(|| format!("Could not read file: '{}'", filepath))?
         .lines()
         .map(parse_line)
-        .collect::<Result<_>>()?;
-
-    let (list_one, list_two): (Vec<i32>, Vec<i32>) = pairs
+        .collect::<Result<Vec<_>>>()?
         .into_iter()
         .unzip();
 
