@@ -1,34 +1,22 @@
-use anyhow::Result;
+use anyhow::{Context, Result};
+use std::fs;
 
 // data cleaning methods
 
 fn parse_line(line: &str) -> Result<Vec<i32>> {
-    let data = line.split(" ")
-        .map(|s| match s.parse::<i32>() {
-            Ok(x) => x,
-            Err(e) => {
-                eprintln!("Error: Could not parse &str: {} into i32: {}", s, e);
-                -1
-            }
+    line.split(' ')
+        .map(|s| {
+            s.parse::<i32>()
+                .with_context(|| format!("Failed to parse '{}' into i32", s))
         })
-        .collect::<Vec<i32>>();
-
-    Ok(data)
+        .collect()
 }
 
 fn prep_data(filepath: &str) -> Result<Vec<Vec<i32>>> {
-    let list: Vec<Vec<i32>> = std::fs::read_to_string(filepath)?
+    fs::read_to_string(filepath)?
         .lines()
-        .map(|line| match parse_line(line) {
-            Ok(data) => data,
-            Err(e) => {
-                eprintln!("Error: Could not parse line: {} into Vec: {}", line, e);
-                vec![]
-            }
-        })
-        .collect::<Vec<Vec<i32>>>();
-
-    Ok(list)
+        .map(|line| parse_line(line))
+        .collect()
 }
 
 // part one methods
