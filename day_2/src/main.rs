@@ -1,5 +1,6 @@
 use anyhow::Result;
 
+// data cleaning methods
 
 fn parse_line(line: &str) -> Result<Vec<i32>> {
     let data = line.split(" ")
@@ -30,6 +31,8 @@ fn prep_data(filepath: &str) -> Result<Vec<Vec<i32>>> {
     Ok(list)
 }
 
+// part one methods
+
 fn is_ascending(data: &Vec<i32>) -> bool {
     for i in 0..data.len() - 1 {
         if data[i] > data[i + 1] {
@@ -58,7 +61,7 @@ fn is_gradual(data: &Vec<i32>) -> bool {
         }
     }
 
-    true 
+    true
 }
 
 fn part_one(filepath: &str) -> Result<i32> {
@@ -74,8 +77,41 @@ fn part_one(filepath: &str) -> Result<i32> {
     Ok(num_safe)
 }
 
-fn part_two(_filepath: &str) -> Result<i32> {
-    Ok(0)
+// part two methods
+
+fn exclude_index<T: Copy>(data: &Vec<T>, index: usize) -> Vec<T> {
+    data.iter()
+        .enumerate()
+        .filter(move |&(i, _)| i != index)
+        .map(|(_, &item)| item)
+        .collect()
+}
+
+fn make_safe(line: &Vec<i32>) -> bool {
+    for i in 0..line.len() {
+        let new_line = exclude_index(line, i);
+        if (is_ascending(&new_line) || is_descending(&new_line)) && is_gradual(&new_line) {
+            return true;
+        }
+    }
+
+    false
+}
+
+fn part_two(filepath: &str) -> Result<i32> {
+    let data = prep_data(filepath)?;
+    let mut num_safe = 0;
+
+    for line in data {
+        if !((is_ascending(&line) || is_descending(&line)) && is_gradual(&line)) {
+           if !make_safe(&line) {
+               continue;
+           }
+        }
+        num_safe += 1;
+    }
+
+    Ok(num_safe)
 }
 
 fn main() {
@@ -132,7 +168,7 @@ mod tests {
 
     #[test]
     fn test_part_two() {
-        let _filepath = "part_two_test_input.txt";
-        assert!(true); // This is a placeholder
+        let filepath = "part_one_test_input.txt";
+        assert!(part_two(filepath).unwrap() == 4);
     }
 }
