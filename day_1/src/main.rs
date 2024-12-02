@@ -20,7 +20,7 @@ fn prep_data(filepath: &str) -> Result<(Vec<i32>, Vec<i32>)> {
     let (list_one, list_two): (Vec<i32>, Vec<i32>) = fs::read_to_string(filepath)
         .with_context(|| format!("Could not read file: '{}'", filepath))?
         .lines()
-        .map(parse_line)
+        .map(|line| parse_line(line))
         .collect::<Result<Vec<_>>>()?
         .into_iter()
         .unzip();
