@@ -1,42 +1,28 @@
-use anyhow::Result;
+use anyhow::{Context, Result};
+use std::fs;
 
 
 // data cleaning methods
 
 fn parse_line(line: &str) -> Result<(i32, i32)> {
-    line.split_once("   ")
-        .ok_or_else(|| anyhow::anyhow!("Could not split line: {}", line))
-        .map(|(x,y)| {
-            let a = match x.parse::<i32>() {
-                Ok(a) => a,
-                Err(e) => {
-                    eprintln!("Error: Could not parse &str: {} into i32: {}", x, e);
-                    -1
-                }
-            };
-            let b = match y.parse::<i32>() {
-                Ok(b) => b,
-                Err(e) => {
-                    eprintln!("Error: Could not parse &str: {} into i32: {}", y, e);
-                    -1
-                }
-            };
-            (a, b)
-        })
+    let (x_str, y_str) = line
+        .split_once("   ")
+        .with_context(|| format!("Could not split line: '{}'", line))?;
+
+    let x = x_str.parse::<i32>()?;
+    let y = y_str.parse::<i32>()?;
+
+    Ok((x, y))
 }
 
-
 fn prep_data(filepath: &str) -> Result<(Vec<i32>, Vec<i32>)> {
-    let (list_one, list_two): (Vec<i32>, Vec<i32>) = std::fs::read_to_string(filepath)?
+    let pairs: Vec<_> = fs::read_to_string(filepath)
+        .with_context(|| format!("Could not read file: '{}'", filepath))?
         .lines()
-        .map(|line| match parse_line(line) {
-            Ok(data) => data,
-            Err(e) => {
-                eprintln!("Error: Could not parse line: {} into Tuple: {}", line, e);
-                (-1, -1)
-            }
-        })
-        .collect::<Vec<(i32, i32)>>()
+        .map(parse_line)
+        .collect::<Result<_>>()?;
+
+    let (list_one, list_two): (Vec<i32>, Vec<i32>) = pairs
         .into_iter()
         .unzip();
 
