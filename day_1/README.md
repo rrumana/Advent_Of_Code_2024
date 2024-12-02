@@ -7,6 +7,8 @@ This day was actually super difficult, not because the challenge was hard, but b
 
 My solution is not very efficient though. For part two I used a O(n^2) solution, which is not ideal. I could have gotten it down to O(nlogn) with a bit of tuning, but honestly it doesn't matter for this challenge
 
+UPDATE: I have come back through and cleaned up the way that I do data cleaning to replace all previous uses of unwrap with my glorious pattern matching.
+
 Instructions follow:
 
 --- Day 1: Historian Hysteria ---
