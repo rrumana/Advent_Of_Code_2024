@@ -36,7 +36,7 @@ fn part_one(filepath: &str) -> Result<i32> {
     list_two.sort();
 
     let mut sum = 0;
-    for (x,y) in list_one.iter().zip(list_two.iter()) {
+    for (x,  y) in list_one.iter().zip(list_two.iter()) {
         sum += difference(x, y);
     }
 
