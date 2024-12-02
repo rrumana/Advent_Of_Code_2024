@@ -1,33 +1,55 @@
 use anyhow::Result;
 
-fn difference(a: &i32, b: &i32) -> i32 {
-   let diff = a - b;  
-   diff.abs()
+
+// data cleaning methods
+
+fn parse_line(line: &str) -> Result<(i32, i32)> {
+    line.split_once("   ")
+        .ok_or_else(|| anyhow::anyhow!("Could not split line: {}", line))
+        .map(|(x,y)| {
+            let a = match x.parse::<i32>() {
+                Ok(a) => a,
+                Err(e) => {
+                    eprintln!("Error: Could not parse &str: {} into i32: {}", x, e);
+                    -1
+                }
+            };
+            let b = match y.parse::<i32>() {
+                Ok(b) => b,
+                Err(e) => {
+                    eprintln!("Error: Could not parse &str: {} into i32: {}", y, e);
+                    -1
+                }
+            };
+            (a, b)
+        })
 }
+
 
 fn prep_data(filepath: &str) -> Result<(Vec<i32>, Vec<i32>)> {
     let (list_one, list_two): (Vec<i32>, Vec<i32>) = std::fs::read_to_string(filepath)?
         .lines()
-        .map(|line| line
-            .split_once("   ")
-            .ok_or_else(|| anyhow::anyhow!("Could not split line: {}", line))
-            .and_then(|(x,y)| {
-                let x = match x.parse::<i32>() {
-                    Ok(x) => x,
-                    Err(..) => 0
-                };
-                let y = match y.parse::<i32>() {
-                    Ok(y) => y,
-                    Err(..) => 0
-                };
-                Ok((x, y))
-            }).unwrap())
+        .map(|line| match parse_line(line) {
+            Ok(data) => data,
+            Err(e) => {
+                eprintln!("Error: Could not parse line: {} into Tuple: {}", line, e);
+                (-1, -1)
+            }
+        })
         .collect::<Vec<(i32, i32)>>()
         .into_iter()
         .unzip();
 
     Ok((list_one, list_two))
 }
+
+// part one methods
+
+fn difference(a: &i32, b: &i32) -> i32 {
+   let diff = a - b;  
+   diff.abs()
+}
+
 
 fn part_one(filepath: &str) -> Result<i32> {
     let (mut list_one, mut list_two) = prep_data(filepath)?;
@@ -42,6 +64,8 @@ fn part_one(filepath: &str) -> Result<i32> {
 
     Ok(sum)
 }
+
+// part two methods
 
 fn part_two(filepath: &str) -> Result<i32> {
     let (list_one, list_two) = prep_data(filepath)?;
