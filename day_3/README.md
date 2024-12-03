@@ -3,7 +3,7 @@ https://adventofcode.com/2024
 
 My findings:
 
-Today's puzzle was really siple provided you know how Regex works. I did not, but I suppose now I now bettwe.
+Today's puzzle was really siple provided you know how Regex works. I did not, but I suppose now I now better.
 
 The puzzles are going by much faster now as I have settled into a preffered structure and rythm for these problems.
 
