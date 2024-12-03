@@ -2,13 +2,6 @@ use anyhow::Result;
 use regex::Regex;
 use std::fs;
 
-// The most basic template for this project.
-
-fn prep_data(filepath: &str) -> Result<String> {
-    let input: String = fs::read_to_string(filepath)?;
-    Ok(input)
-}
-
 // part one functions
 
 fn get_sum(input: &str) -> Result<i32> {
@@ -28,7 +21,7 @@ fn get_sum(input: &str) -> Result<i32> {
 }
 
 fn part_one(filepath: &str) -> Result<i32> {
-    let data = prep_data(filepath)?;
+    let data: String = fs::read_to_string(filepath)?;
     let ans = get_sum(&data)?;
     
     Ok(ans)
@@ -37,13 +30,8 @@ fn part_one(filepath: &str) -> Result<i32> {
 // part two functions
 
 fn part_two(filepath: &str) -> Result<i32> {
-    let data = prep_data(filepath)?;
-
-    let re = match Regex::new(r"don't\(\)[\s\S]*?do\(\)") {
-        Ok(re) => re,
-        Err(e) => return Err(anyhow::anyhow!("Could not create regex: {}", e)),
-    };
-
+    let data: String = fs::read_to_string(filepath)?;
+    let re = Regex::new(r"don't\(\)[\s\S]*?do\(\)")?;
     let data = re.replace_all(&data, "");
     let ans = get_sum(&data)?;
 
@@ -78,12 +66,6 @@ mod tests {
     #[test]
     fn test_part_one() {
         let filepath = "part_one_test_input.txt";
-        assert_eq!(part_one(filepath).unwrap(), 2652); // This is a placeholder
-    }
-
-    #[test]
-    fn test_part_two() {
-        let _filepath = "part_two_test_input.txt";
-        assert!(true); // This is a placeholder
+        assert_eq!(part_one(filepath).unwrap(), 2652);
     }
 }
