@@ -9,6 +9,8 @@ The puzzles are going by much faster now as I have settled into a preffered stru
 
 I am happy, in general, with how these are going, although I can't help but feel like my code is very verbose compared to others I see on the reddit. Oh well.
 
+Update: I have a gone through and made my code significantly more concise moving where error handling is managed. This is not neccessarily better but it is a lot simpler to read and understand. I struggle between the two extremes of propagating all errors back to the main function vs handling all errors immediately, I can't seem to find a happy medium that feels idiomatic. I certainly prefer error propagation wherever possible, but that isn't always best.
+
 Instructions follow:
 
 --- Day 3: Mull It Over ---
