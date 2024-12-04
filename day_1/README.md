@@ -7,6 +7,17 @@ This day was actually super difficult, not because the challenge was hard, but b
 
 UPDATE: I have come back through and made my day 1 solution much more efficient by using hash maps for constant lookup times. Since making the Hashmap and iterating through it are both O(n) operations, the overall time oomplexity is O(n), which is much faster than the O(n^2) time complexity of my original solution. I also cleaned up the way that I do data parsing to replace all previous uses of unwrap with functional calls and my glorious pattern matching.
 
+UPDATE 2: I have come back through to add performance data to quantify how long each part is taking.
+
+
+Performance data:
+
+These results are the average of 3 runs on my computer with very little thought given to actual optimization.
+
+Day 1, Part 1 averaged 701.54µs
+Day 1, Part 2 time elapsed 1.36ms
+
+
 Instructions follow:
 
 --- Day 1: Historian Hysteria ---
