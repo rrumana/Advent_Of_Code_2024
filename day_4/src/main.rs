@@ -1,4 +1,5 @@
 use anyhow::Result;
+use std::time::Instant;
 
 // Data cleaning methods
 
@@ -91,7 +92,7 @@ fn part_two(filepath: &str) -> Result<i32> {
     let mut count = 0;
     for (row, line) in data.iter().enumerate() {
         for (col, c) in line.iter().enumerate() {
-            if *c == 'A' && row > 0 && col > 0 && row < data.len() - 1 && col < line.len() - 1 {
+            if *c == 'A' && row > 0 && row < data.len() - 1 && col > 0 && col < line.len() - 1 {
                  if data[row - 1][col - 1] == 'M' &&
                     data[row - 1][col + 1] == 'M' &&
                     data[row + 1][col - 1] == 'S' &&
@@ -133,15 +134,22 @@ fn main() {
 
     println!("Hello, Advent of Code 2024!");
 
+    let now = Instant::now();
+
     match part_one(filepath) {
         Ok(answer) => println!("Day 4, Part one answer: {}", answer),
         Err(e) => println!("Error: Could not calculate part one answer. {}", e),
     };
 
+    println!("Day 4, Part one time elapsed: {:.2?}", now.elapsed());
+    let now = Instant::now();
+
     match part_two(filepath) {
         Ok(answer) => println!("Day 4, Part two answer: {}", answer),
         Err(e) => println!("Error: Could not calculate part two answer. {}", e),
     };
+
+    println!("Day 4, Part 2 time elapsed: {:.2?}", now.elapsed());
 }
 
 #[cfg(test)]
