@@ -1,5 +1,5 @@
 use anyhow::Result;
-use fs::time::Instant;
+use std::time::Instant;
 use regex::Regex;
 use std::fs;
 
