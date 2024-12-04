@@ -1,24 +1,28 @@
-##Do advent of code! it's awesome./
-https://adventofcode.com/2024
+## Do advent of code! it's awesome
+https://adventofcode.com/2024\
+&emsp;\
+&emsp;
 
-My findings:
+## My findings:
 
 This day was actually super difficult, not because the challenge was hard, but because I was trying to be really fancy with my approach and use Rust's more functional side. I also have stipulated that I will not use unwrap as much as possible, so that means learning about error handling a lot more. The challenge was pretty easy after I figured out how to parse a whole text file into two vectors in one go. I did use one unwrap in the end, but I am fairly certain that it won't be problematic given a generic dataset and was committed to the bit of doing all the parsing in one go.
 
 UPDATE: I have come back through and made my day 1 solution much more efficient by using hash maps for constant lookup times. Since making the Hashmap and iterating through it are both O(n) operations, the overall time oomplexity is O(n), which is much faster than the O(n^2) time complexity of my original solution. I also cleaned up the way that I do data parsing to replace all previous uses of unwrap with functional calls and my glorious pattern matching.
 
-UPDATE 2: I have come back through to add performance data to quantify how long each part is taking.
+UPDATE 2: I have come back through to add performance data to quantify how long each part is taking.\
+&emsp;\
+&emsp;
 
-
-Performance data:
+## Performance data:
 
 These results are the average of 3 runs on my computer with very little thought given to actual optimization.
 
 Day 1, Part 1 averaged 701.54µs\
-Day 1, Part 2 time elapsed 1.36ms
+Day 1, Part 2 time elapsed 1.36ms\
+&emsp;\
+&emsp;
 
-
-Instructions follow:
+## Instructions follow:
 
 --- Day 1: Historian Hysteria ---
 
