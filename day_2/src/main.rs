@@ -1,4 +1,5 @@
 use anyhow::{Context, Result};
+use std::time::Instant;
 use std::fs;
 
 // data cleaning methods
@@ -107,15 +108,22 @@ fn main() {
 
     println!("Hello, Advent of Code 2024!");
 
+    let now = Instant::now();
+
     match part_one(filepath) {
-        Ok(answer) => println!("Day 2, Part one answer: {}", answer),
+        Ok(answer) => println!("Day 2, Part 1 answer: {}", answer),
         Err(e) => println!("Error: Could not calculate part one answer. {}", e),
     };
 
+    println!("Day 2, Part 1 time elapsed {:.2?}", now.elapsed());
+    let now = Instant::now();
+
     match part_two(filepath) {
-        Ok(answer) => println!("Day 2, Part two answer: {}", answer),
+        Ok(answer) => println!("Day 2, Part 2 answer: {}", answer),
         Err(e) => println!("Error: Could not calculate part two answer. {}", e),
     };
+
+    println!("Day 2, Part 2 time elapsed {:.2?}", now.elapsed());
 }
 
 #[cfg(test)]

@@ -1,17 +1,28 @@
-##This is my advent of code 2024 template
+## Do advent of code! it's awesome.
+https://adventofcode.com/2024\
+&emsp;\
+&emsp;
 
-Do advent of code! it's awesome.
-https://adventofcode.com/2024
-
-My findings:
+## My findings:
 
 Today got off to a much smoother start. Armed with what I had learned yesterday I was able to read in the data and split it up much better. I was also able to completely avoid using unwrap and only use glorious match statements. I will go back and update my day 1 code to follow this practice.
 
 I tried to dig myself into a hole on the second part. When I submitted my somewhat elegant and relatively efficient solution the number it submitted  was too small, as I suspect many's were at the start, and so I started adding if statements to catch edge conditions. This approach was flawwed because apparently there are a lot of ways to mess up these lists, and it was much quicker to recognize that I was only working with 1000 short lists and brute force it.
 
-I really hate doing that, but it is the most complete solution for sure.
+I really hate doing that, but it is the most complete solution for sure.\
+&emsp;\
+&emsp;
 
-Instructions follow:
+## Performance data:
+
+These results are the average of 3 runs on my computer with very little thought given to actual optimization.
+
+Day 1, Part 1 averaged 701.54µs\
+Day 1, Part 2 time elapsed 1.36ms\
+&emsp;\
+&emsp;
+
+## Instructions follow:
 
 --- Day 2: Red-Nosed Reports ---
 
