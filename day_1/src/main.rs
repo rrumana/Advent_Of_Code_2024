@@ -97,7 +97,7 @@ fn main() {
     let now = Instant::now();
 
     match part_two(filepath) {
-        Ok(answer) => println!("Day 1, Part two answer: {}", answer),
+        Ok(answer) => println!("Day 1, Part 2 answer: {}", answer),
         Err(e) => println!("Error: Could not calculate part two answer. {}", e),
     };
 
