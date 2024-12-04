@@ -14,7 +14,7 @@ Performance data:
 
 These results are the average of 3 runs on my computer with very little thought given to actual optimization.
 
-Day 1, Part 1 averaged 701.54µs
+Day 1, Part 1 averaged 701.54µs\
 Day 1, Part 2 time elapsed 1.36ms
 
 
