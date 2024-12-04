@@ -1,21 +1,31 @@
-Do advent of code! it's awesome.
-https://adventofcode.com/2024
+## Do advent of code! it's awesome.
+https://adventofcode.com/2024\
+&emsp;\
+&emsp;
 
-My findings:
+## My findings:
 
 Today's challenge was pretty easy all things considered. Rust has a few tricks that make this type of problem very easy with its iterators and enumeration features. I really like looping without the fear of an off by one error, especially when dereferencing a borrow.
 
 My logic is a bit of a monstrosity. There was prohably a better way to do this, but making 5 or 8 relatively detailed if statements was just so easy, and allowed me to have an O(n) solution since it is just one iteration through each character. I will come back and update this if I think of a better solution to this problem.
 
-I will be adding performance data to my reports from now on since it is relatively easy for me to include and measure how fast each solution is. Today's solution had the following performance characteristics:
+I will be adding performance data to my reports from now on since it is relatively easy for me to include and measure how fast each solution is.
 
-Day 4, Part one time elapsed: 1.61ms
-Day 4, Part 2 time elapsed: 1.02ms
+I have just been informed that we are supposed to not post our input. This is news to me but I am a bit of a newcomer to AOC. I will be scrubbing the input files from this solution and previous solutions.\
+&emsp;\
+&emsp;
 
-I have just been informed that we are supposed to not post our input. This is news to me but I am a bit of a newcomer to AOC. I will be scrubbing the input files from this solution and previous solutions.
+## Performance data:
 
-Instructions follow:
+These results are the average of 3 runs on my computer with very little thought given to actual optimization.
 
+Day 1, Part 1 averaged 1.61ms\
+Day 1, Part 2 averaged 1.06ms\
+&emsp;\
+&emsp;
+
+
+## Instructions follow:
 
 --- Day 4: Ceres Search ---
 
