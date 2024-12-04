@@ -1,4 +1,4 @@
-# Advent_Of_Code_2024
+# Advent Of Code 2024
 Repository containing all of my Advent of Code 2024 work
 
 I toyed with the idea of doing this year in Golang, but honestly looking back at my poor attempt at Advent Of Code last year I'd like to redeem myself with Rust building on what I have learned in the past year.
