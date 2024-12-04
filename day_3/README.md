@@ -1,7 +1,9 @@
-Do advent of code! it's awesome.
-https://adventofcode.com/2024
+## Do advent of code! it's awesome.
+https://adventofcode.com/2024\
+&emsp;\
+&emsp;
 
-My findings:
+## My findings:
 
 Today's puzzle was really siple provided you know how Regex works. I did not, but I suppose now I now better.
 
@@ -9,9 +11,22 @@ The puzzles are going by much faster now as I have settled into a preffered stru
 
 I am happy, in general, with how these are going, although I can't help but feel like my code is very verbose compared to others I see on the reddit. Oh well.
 
-Update: I have a gone through and made my code significantly more concise moving where error handling is managed. This is not neccessarily better but it is a lot simpler to read and understand. I struggle between the two extremes of propagating all errors back to the main function vs handling all errors immediately, I can't seem to find a happy medium that feels idiomatic. I certainly prefer error propagation wherever possible, but that isn't always best.
+Update: I have a gone through and made my code significantly more concise moving where error handling is managed. This is not neccessarily better but it is a lot simpler to read and understand. I struggle between the two extremes of propagating all errors back to the main function vs handling all errors immediately, I can't seem to find a happy medium that feels idiomatic. I certainly prefer error propagation wherever possible, but that isn't always best.\
+&emsp;\
+&emsp; 
 
-Instructions follow:
+## Performance data:
+
+These results are the average of 3 runs on my computer with very little thought given to actual optimization.
+
+Day 1, Part 1 averaged 4.78ms\
+Day 1, Part 2 time elapsed 4.76ms
+
+Today's solution was very slow compared to the rest, I may investigate why that is.\
+&emsp;\
+&emsp;
+
+## Instructions follow:
 
 --- Day 3: Mull It Over ---
 
