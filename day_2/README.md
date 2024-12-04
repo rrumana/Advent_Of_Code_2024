@@ -18,7 +18,7 @@ I really hate doing that, but it is the most complete solution for sure.\
 These results are the average of 3 runs on my computer with very little thought given to actual optimization.
 
 Day 1, Part 1 averaged 952.46µs\
-Day 1, Part 2 time elapsed 2.41ms\
+Day 1, Part 2 averaged 2.41ms\
 &emsp;\
 &emsp;
 
