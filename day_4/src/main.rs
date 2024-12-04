@@ -1,13 +1,131 @@
 use anyhow::Result;
 
-// The most basic template for this project.
+// Data cleaning methods
 
-fn part_one(_filepath: &str) -> Result<i32> {
-    Ok(0)
+fn parse_data(filepath: &str) -> Result<Vec<Vec<char>>> {
+    let data = std::fs::read_to_string(filepath)?;
+    let output = data
+        .lines()
+        .map(|line| line
+            .chars()
+            .collect())
+        .collect();
+
+    Ok(output)
 }
 
-fn part_two(_filepath: &str) -> Result<i32> {
-    Ok(0)
+// Part one methods
+
+fn part_one(filepath: &str) -> Result<i32> {
+    let data = parse_data(filepath)?;
+    
+    let mut count = 0;
+    for (row, line) in data.iter().enumerate() {
+        for (col, c) in line.iter().enumerate() {
+            if *c == 'X' {
+                if row > 2 && col > 2 
+                    && data[row - 1][col - 1] == 'M' 
+                    && data[row - 2][col - 2] == 'A' 
+                    && data[row - 3][col - 3] == 'S' {
+                    count += 1;
+                }
+                
+                if row > 2 
+                    && data[row - 1][col] == 'M' 
+                    && data[row - 2][col] == 'A' 
+                    && data[row - 3][col] == 'S' {
+                    count += 1;
+                }
+
+                if row > 2 && col < line.len() - 3
+                    && data[row - 1][col + 1] == 'M' 
+                    && data[row - 2][col + 2] == 'A' 
+                    && data[row - 3][col + 3] == 'S' {
+                    count += 1;
+                }
+
+                if col > 2 
+                    && data[row][col - 1] == 'M' 
+                    && data[row][col - 2] == 'A' 
+                    && data[row][col - 3] == 'S' {
+                    count += 1;
+                }
+
+                if col < line.len() - 3 
+                    && data[row][col + 1] == 'M' 
+                    && data[row][col + 2] == 'A' 
+                    && data[row][col + 3] == 'S' {
+                    count += 1;
+                }
+
+                if row < data.len() - 3 && col > 2
+                    && data[row + 1][col - 1] == 'M' 
+                    && data[row + 2][col - 2] == 'A' 
+                    && data[row + 3][col - 3] == 'S' {
+                    count += 1;
+                }
+
+                if row < data.len() - 3
+                    && data[row + 1][col] == 'M' 
+                    && data[row + 2][col] == 'A' 
+                    && data[row + 3][col] == 'S' {
+                    count += 1;
+                }
+
+                if row < data.len() - 3 && col < line.len() - 3
+                    && data[row + 1][col + 1] == 'M' 
+                    && data[row + 2][col + 2] == 'A' 
+                    && data[row + 3][col + 3] == 'S' {
+                    count += 1;
+                }
+            }
+        }
+    }
+
+    Ok(count)
+}
+
+fn part_two(filepath: &str) -> Result<i32> {
+    let data = parse_data(filepath)?;
+    
+    let mut count = 0;
+    for (row, line) in data.iter().enumerate() {
+        for (col, c) in line.iter().enumerate() {
+            if *c == 'A' && row > 0 && col > 0 && row < data.len() - 1 && col < line.len() - 1 {
+                 if data[row - 1][col - 1] == 'M' &&
+                    data[row - 1][col + 1] == 'M' &&
+                    data[row + 1][col - 1] == 'S' &&
+                    data[row + 1][col + 1] == 'S' {
+                    count += 1;
+                 }
+
+                 if data[row - 1][col - 1] == 'S' &&
+                    data[row - 1][col + 1] == 'S' &&
+                    data[row + 1][col - 1] == 'M' &&
+                    data[row + 1][col + 1] == 'M' {
+                    count += 1;
+                 }
+                 
+
+                 if data[row - 1][col - 1] == 'M' &&
+                    data[row - 1][col + 1] == 'S' &&
+                    data[row + 1][col - 1] == 'M' &&
+                    data[row + 1][col + 1] == 'S' {
+                    count += 1;
+                 }
+
+
+                 if data[row - 1][col - 1] == 'S' &&
+                    data[row - 1][col + 1] == 'M' &&
+                    data[row + 1][col - 1] == 'S' &&
+                    data[row + 1][col + 1] == 'M' {
+                    count += 1;
+                 }
+            }
+        }
+    }
+
+    Ok(count)
 }
 
 fn main() {
@@ -37,13 +155,13 @@ mod tests {
 
     #[test]
     fn test_part_one() {
-        let _filepath = "part_one_test_input.txt";
-        assert!(true); // This is a placeholder
+        let filepath = "part_one_test_input.txt";
+        assert_eq!(part_one(filepath).unwrap(), 18); 
     }
 
     #[test]
     fn test_part_two() {
-        let _filepath = "part_two_test_input.txt";
-        assert!(true); // This is a placeholder
+        let filepath = "part_two_test_input.txt";
+        assert_eq!(part_two(filepath).unwrap(), 9);
     }
 }
