@@ -113,6 +113,10 @@ fn part_two(filepath: &str) -> Result<i64> {
     let data = parse_data(filepath)?;
     let mut result = 0;
     for (total, nums) in data {
+        if find_combo(&total, &nums)? {
+            result += total;
+            continue;
+        }
         if find_combo_two(&total, &nums)? {
             result += total;
         }
