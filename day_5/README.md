@@ -15,8 +15,8 @@ It has gotten more difficult to do tidy error handling and unit testing, for eac
 
 These results are the average of 3 runs on my computer with very little thought given to actual optimization.
 
-Day 1, Part 1 averaged 1.36ms\
-Day 1, Part 2 averaged 4.44ms
+Day 5, Part 1 averaged 1.36ms\
+Day 5, Part 2 averaged 4.44ms
 
 Today's solution was not very fast, but people online claimed that the brute force was O(n!) so I can safely say I'm more optimal than that.\
 &emsp;\

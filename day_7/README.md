@@ -13,8 +13,8 @@ Today's challenge was pretty easy to solve, although I am not sure how to optimi
 
 These results are the average of 3 runs on my computer with very little thought given to actual optimization.
 
-Day 1, Part 1 averaged 4.28ms\
-Day 1, Part 2 averaged 3.23s\
+Day 7, Part 1 averaged 4.28ms\
+Day 7, Part 2 averaged 3.23s\
 &emsp;
 
 ## Instructions follow:

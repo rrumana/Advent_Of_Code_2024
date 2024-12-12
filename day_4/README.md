@@ -19,8 +19,8 @@ I have just been informed that we are supposed to not post our input. This is ne
 
 These results are the average of 3 runs on my computer with very little thought given to actual optimization.
 
-Day 1, Part 1 averaged 1.61ms\
-Day 1, Part 2 averaged 1.06ms\
+Day 4, Part 1 averaged 1.61ms\
+Day 4, Part 2 averaged 1.06ms\
 &emsp;\
 &emsp;
 

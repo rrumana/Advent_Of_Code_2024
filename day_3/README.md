@@ -19,8 +19,8 @@ Update: I have a gone through and made my code significantly more concise moving
 
 These results are the average of 3 runs on my computer with very little thought given to actual optimization.
 
-Day 1, Part 1 averaged 4.78ms\
-Day 1, Part 2 averaged 4.76ms
+Day 3, Part 1 averaged 4.78ms\
+Day 3, Part 2 averaged 4.76ms
 
 Today's solution was very slow compared to the rest, I may investigate why that is.\
 &emsp;\

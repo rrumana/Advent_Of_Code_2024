@@ -15,8 +15,8 @@ I really wanted to do only efficient solutions this year, not brute force, but I
 
 These results are the average of 3 runs on my computer with very little thought given to actual optimization.
 
-Day 1, Part 1 averaged 4.28ms\
-Day 1, Part 2 averaged 28.27s
+Day 6, Part 1 averaged 4.28ms\
+Day 6, Part 2 averaged 28.27s
 
 That's not a typo, 30 seconds. That's because the time complexity for my solution for part two is O(n*(simulation)) since we basically have to test each visited square for the possibility of a loop. The time complexity of simulation without loop detection is O(n) where n is the number of possible positions on the map since we just walk through it. When doing with loop detection, however, the time complexity jumps to O(n^2) since we must check the whole list of visited states each turn, which could contain up to every state in all four directions. This would make the total time complexity O(n^3) since we must resimulate with loop detection for each visited state, which is an O(n^2) operation.\
 &emsp;
