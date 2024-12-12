@@ -29,6 +29,7 @@ You ask how long it'll take; the engineers tell you that it only needs final cal
 
 For example:
 
+```
 190: 10 19
 3267: 81 40 27
 83: 17 5
@@ -38,6 +39,7 @@ For example:
 192: 17 8 14
 21037: 9 7 18 13
 292: 11 6 16 20
+```
 
 Each line represents a single equation. The test value appears before the colon on each line; it is your job to determine whether the remaining numbers can be combined with operators to produce the test value.
 
@@ -54,6 +56,7 @@ The engineers just need the total calibration result, which is the sum of the te
 Determine which equations could possibly be true. What is their total calibration result?
 
 Your puzzle answer was REDACTED.
+
 --- Part Two ---
 
 The engineers seem concerned; the total calibration result you gave them is nowhere close to being within safety tolerances. Just then, you spot your mistake: some well-hidden elephants are holding a third type of operator.
