@@ -7,7 +7,7 @@ https://adventofcode.com/2024\
 
 Today's challenge was pretty simple, the biggest challenge for me was wresting with the input to get it exactly the way that I want it.
 
-I initially wanted to use a multimap to efficiently manage a Hashmap<char, Vec<(i32, i32)>>, but I didn't like the way that the Multimap does access patterns for the vector of coordinates, so I ended up building it, myself.\
+I initially wanted to use a multimap to efficiently manage a Hashmap<char, Vec<(i32, i32)>>, but I didn't like the way that the Multimap does access patterns for the vector of coordinates, so I ended up building it myself.\
 &emsp;\
 &emsp; 
 
@@ -16,7 +16,7 @@ I initially wanted to use a multimap to efficiently manage a Hashmap<char, Vec<(
 These results are the average of 3 runs on my computer with very little thought given to actual optimization.
 
 Day 8, Part 1 averaged 419.12µs\
-Day 8, Part 2 averaged 991.09µs\
+Day 8, Part 2 averaged 991.09µs
 
 Finally... back under a milisecond.\
 &emsp;
@@ -31,6 +31,7 @@ While The Historians do their thing, you take a look at the familiar huge antenn
 
 Scanning across the city, you find that there are actually many such antennas. Each antenna is tuned to a specific frequency indicated by a single lowercase letter, uppercase letter, or digit. You create a map (your puzzle input) of these antennas. For example:
 
+```
 ............
 ........0...
 .....0......
@@ -43,11 +44,13 @@ Scanning across the city, you find that there are actually many such antennas. E
 .........A..
 ............
 ............
+```
 
 The signal only applies its nefarious effect at specific antinodes based on the resonant frequencies of the antennas. In particular, an antinode occurs at any point that is perfectly in line with two antennas of the same frequency - but only when one of the antennas is twice as far away as the other. This means that for any pair of antennas with the same frequency, there are two antinodes, one on either side of them.
 
 So, for these two antennas with frequency a, they create the two antinodes marked with #:
 
+```
 ..........
 ...#......
 ..........
@@ -58,9 +61,11 @@ So, for these two antennas with frequency a, they create the two antinodes marke
 ......#...
 ..........
 ..........
+```
 
 Adding a third antenna with the same frequency creates several more antinodes. It would ideally add four antinodes, but two are off the right side of the map, so instead it adds only two:
 
+```
 ..........
 ...#......
 #.........
@@ -71,9 +76,11 @@ Adding a third antenna with the same frequency creates several more antinodes. I
 ......#...
 ..........
 ..........
+```
 
 Antennas with different frequencies don't create antinodes; A and a count as different frequencies. However, antinodes can occur at locations that contain antennas. In this diagram, the lone antenna with frequency capital A creates no antinodes but has a lowercase-a-frequency antinode at its location:
 
+```
 ..........
 ...#......
 #.........
@@ -84,9 +91,11 @@ Antennas with different frequencies don't create antinodes; A and a count as dif
 ......A...
 ..........
 ..........
+```
 
 The first example has antennas with two different frequencies, so the antinodes they create look like this, plus an antinode overlapping the topmost A-frequency antenna:
 
+```
 ......#....#
 ...#....0...
 ....#0....#.
@@ -99,6 +108,7 @@ The first example has antennas with two different frequencies, so the antinodes 
 .........A..
 ..........#.
 ..........#.
+```
 
 Because the topmost A-frequency antenna overlaps with a 0-frequency antinode, there are 14 total unique locations that contain an antinode within the bounds of the map.
 
@@ -115,6 +125,7 @@ After updating your model, it turns out that an antinode occurs at any grid posi
 
 So, these three T-frequency antennas now create many antinodes:
 
+```
 T....#....
 ...T......
 .T....#...
@@ -125,11 +136,13 @@ T....#....
 ..........
 ....#.....
 ..........
+```
 
 In fact, the three T-frequency antennas are all exactly in line with two antennas, so they are all also antinodes! This brings the total number of antinodes in the above example to 9.
 
 The original example now has 34 antinodes, including the antinodes that appear on every antenna:
 
+```
 ##....#....#
 .#.#....0...
 ..#.#0....#.
@@ -142,16 +155,11 @@ The original example now has 34 antinodes, including the antinodes that appear o
 ....#....A..
 .#........#.
 ...#......##
+```
 
 Calculate the impact of the signal using this updated model. How many unique locations within the bounds of the map contain an antinode?
 
 Your puzzle answer was REACTED.
 
 Both parts of this puzzle are complete! They provide two gold stars: **
-
-At this point, you should return to your Advent calendar and try another puzzle.
-
-If you still want to see it, you can get your puzzle input.
-
-You can also [Shareon Bluesky Twitter Mastodon] this puzzle.
 
