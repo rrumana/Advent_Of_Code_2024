@@ -114,8 +114,6 @@ fn part_one(filepath: &str) -> Result<usize> {
 
 // Part 2 Functions
 
-
-
 fn part_two(filepath: &str) -> Result<usize> {
     let map = parse_data(filepath)?;
     let (width, height) = get_dimensions(filepath)?;
