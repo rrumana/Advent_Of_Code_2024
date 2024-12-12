@@ -38,6 +38,7 @@ The Elf has for you both the page ordering rules and the pages to produce in eac
 
 For example:
 
+```
 47|53
 97|13
 97|61
@@ -66,6 +67,7 @@ For example:
 75,97,47,61,53
 61,13,29
 97,13,75,29,47
+```
 
 The first section specifies the page ordering rules, one per line. The first rule, 47|53, means that if an update includes both page number 47 and page number 53, then page number 47 must be printed at some point before page number 53. (47 doesn't necessarily need to be immediately before 53; other pages are allowed to be between them.)
 
@@ -93,9 +95,9 @@ The last update, 97,13,75,29,47, is not in the correct order due to breaking sev
 
 For some reason, the Elves also need to know the middle page number of each update being printed. Because you are currently only printing the correctly-ordered updates, you will need to find the middle page number of each correctly-ordered update. In the above example, the correctly-ordered updates are:
 
-75,47,61,53,29
-97,61,53,29,13
-75,29,13
+    75,47,61,53,29
+    97,61,53,29,13
+    75,29,13
 
 These have middle page numbers of 61, 53, and 29 respectively. Adding these page numbers together gives 143.
 
@@ -104,7 +106,6 @@ Of course, you'll need to be careful: the actual list of page ordering rules is 
 Determine which updates are already in the correct order. What do you get if you add up the middle page number from those correctly-ordered updates?
 
 Your puzzle answer was REDACTED.
-
 
 --- Part Two ---
 
@@ -123,7 +124,3 @@ Find the updates which are not in the correct order. What do you get if you add 
 Your puzzle answer was REDACTED.
 
 Both parts of this puzzle are complete! They provide two gold stars: **
-
-At this point, you should return to your Advent calendar and try another puzzle.
-
-If you still want to see it, you can get your puzzle input.
